@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="forecast"
+            type="com.marufalam.weatherapps.models.ForecastModel.ForeCastList" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        app:contentPadding="5dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="5dp"
+        android:layout_margin="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_dateTV"
+                tools:text="Tue 12:00"
+                app:setDateTime="@{forecast.dt}"/>
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/row_image"
+                android:src="@mipmap/ic_launcher"
+                app:setIcon="@{forecast.weather[0].icon}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_max_min_tv"
+                tools:text="34/24"
+                android:text="@{forecast.main.tempMax +``+forecast.main.tempMin}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/row_condition_tv"
+                android:text="@{forecast.weather[0].description}"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
